@@ -1,5 +1,11 @@
+
+<h1>취미</h1>
 <ul>
-    <li>영화 보기</li>
-    <li>여행 가기</li>
-    <li>음악 감상</li>
+    {% for hobby in hobbies %}
+        <li>{{ hobby }}</li>
+    {% endfor %}
 </ul>
+
+<a href="/">hb</a>
+<a href="/profile">취미</a>
+<a href="/greet/차형빈">인사</a>

@@ -10,11 +10,12 @@ def hi_template_render():
 
 @app.route("/profile")
 def profile():
-    return render_template("profile.html")
+    hobbies=["영화 감상","여행 가기","음악 감상"]
+    return render_template("profile.html",hobbies=hobbies)
 
 @app.route("/greet/<name>")
 def greet(name):
-    return render_template("greet.html", name=name) 
+    return render_template("greet.html", name=name)
 
 if __name__ == "__main__":
     app.run(debug=True)
