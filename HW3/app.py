@@ -9,6 +9,7 @@ class Todo(db.Model):
     id=db.Column(db.Integer, primary_key=True)
     text=db.Column(db.String(100), nullable=False)
     done=db.Column(db.Boolean, default=False)
+    note=db.Column(db.BoString(200))
 
     def __repr__(self):
         return f'<Todo {self.id} {self.text}>'
@@ -16,7 +17,8 @@ class Todo(db.Model):
 @app.route('/',methods=['GET','POST'])
 def index():
     if request.method=='POST':
-        db.session.add(Todo(text=request.form['todo']))
+        todo=Todo(text=request.form['todo'],note=request.form['note'])
+        db.session.add(todo)
         db.session.commit()
         return redirect(url_for('index'))
 
