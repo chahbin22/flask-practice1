@@ -9,7 +9,7 @@ class Todo(db.Model):
     id=db.Column(db.Integer, primary_key=True)
     text=db.Column(db.String(100), nullable=False)
     done=db.Column(db.Boolean, default=False)
-    note=db.Column(db.BoString(200))
+    note=db.Column(db.String(200))
 
     def __repr__(self):
         return f'<Todo {self.id} {self.text}>'
@@ -39,6 +39,17 @@ def delete(id):
     db.session.commit()
     return redirect(url_for('index'))
 
+@app.route('/edit/<int:id>', methods=['GET', 'POST'])
+def edit(id):
+    todo = db.get_or_404(Todo, id)
+
+    if request.method == 'POST':
+        todo.text = request.form['todo']
+        todo.note = request.form['note']
+        db.session.commit()
+        return redirect(url_for('index'))
+
+    return render_template('edit.html', todo=todo)
 
 with app.app_context():
     db.create_all()
