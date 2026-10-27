@@ -1,5 +1,6 @@
 from flask import Flask,render_template,request,url_for
 
+
 app = Flask(__name__)
 
 # @app.route("/")
@@ -96,15 +97,15 @@ app = Flask(__name__)
 #         <button type="submit">보내기</button>
 #     </form>'''
 
-#Note5_3-1
-@app.route('/user/<username>')
-def user_profile(username):
-    return render_template('profile.html',username=username,posts=['첫 글','두 번째 글'])
+# #Note5_3-1
+# @app.route('/user/<username>')
+# def user_profile(username):
+#     return render_template('profile.html',username=username,posts=['첫 글','두 번째 글'])
 
-#Note5_3-2
-@app.route('/newuser/<username>')
-def new_user(username):
-    return render_template('profile.html',username=username,posts=[])
+# #Note5_3-2
+# @app.route('/newuser/<username>')
+# def new_user(username):
+#     return render_template('profile.html',username=username,posts=[])
 
-if __name__ == "__main__":
-    app.run(debug=True)
+# if __name__ == "__main__":
+#     app.run(debug=True)
